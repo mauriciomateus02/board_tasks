@@ -147,7 +147,7 @@ A aplicação estará disponível em http://localhost:5173
 
 ### 1. **Login**
 
-Acesse http://localhost:5173 (ou http://localhost:4173 com Docker)
+Acesse http://localhost:5173/login (ou http://localhost:4173/login com Docker)
 
 Use as credenciais de exemplo:
 - **Email:** `user1@email.com` ou `user2@email.com`
@@ -384,7 +384,7 @@ MAIL_USERNAME=null
 MAIL_PASSWORD=null
 ```
 
-## 📞 Suporte
+## Suporte
 
 Para dúvidas ou problemas, verifique os logs:
 
@@ -398,10 +398,3 @@ docker-compose logs -f api
 # PostgreSQL
 docker-compose logs -f postgres
 ```
-
-## 📄 Licença
-
-Este projeto é fornecido como está para fins educacionais.
-
----
-
