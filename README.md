@@ -232,6 +232,9 @@ board_tasks/
 │   ├── composer.json
 │   └── artisan                    # CLI do Laravel
 │
+├── nginx/
+│     └── default.conf
+│
 ├── docker-compose.yml             # Orquestração de containers
 ├── .gitignore
 └── README.md
