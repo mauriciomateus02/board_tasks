@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/notification-settings', [NotificationSettingController::class, 'show']);
 
     Route::post('/notification-settings', [NotificationSettingController::class, 'store']);
+    Route::delete('/notification-settings/{notificationSetting}', [NotificationSettingController::class, 'destroy']);
 
 });
