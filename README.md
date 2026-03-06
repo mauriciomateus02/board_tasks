@@ -48,19 +48,26 @@ Um aplicativo completo para gerenciamento de tarefas com notificações. O proje
    cd board_tasks
    ```
 
-2. **Criar arquivo `.env` para a API** (copie o exemplo e adicione suas credenciais):
+2. **Criar arquivo `.env` para a API** (copie o exemplo e adicione as credenciais):
    ```bash
    cp board_tasks_api/.env.example board_tasks_api/.env
    ```
-   - O `.env` é usado para configurar o banco de dados, o serviço de email e outras variáveis de ambiente.  
-   - Preencha pelo menos as variáveis de mail para que a aplicação possa enviar notificações:
+   - O `.env` é usado para configurar o banco de dados, o serviço de email e outras variáveis de ambiente. **Você deve inserir manualmente as credenciais do banco de dados** (host, porta, nome, usuário, senha) ou apenas copiar todos que começam com DB e 
+   colar no seu `.env`
      ```ini
+
+     DB_CONNECTION=psql
+     DB_HOST=127.0.0.1
+     DB_PORT=5432
+     DB_DATABASE=postgres
+     DB_USERNAME=postgres
+     DB_PASSWORD=board_tasks
      MAIL_MAILER=smtp
-     MAIL_HOST=sua-servidor-smtp
-     MAIL_PORT=587
-     MAIL_USERNAME=usuario
-     MAIL_PASSWORD=senha
-     MAIL_ENCRYPTION=tls
+     MAIL_HOST=mailhog
+     MAIL_PORT=1025
+     MAIL_USERNAME=null
+     MAIL_PASSWORD=null
+     MAIL_ENCRYPTION=null
      MAIL_FROM_ADDRESS=seu@endereco.com
      MAIL_FROM_NAME="Board Tasks"
      ```

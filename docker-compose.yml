@@ -13,30 +13,22 @@ services:
 
   api:
     build: ./board_tasks_api
-    ports:
-      - "8000:8000"
-    environment:
-      - DB_CONNECTION=pgsql
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_DATABASE=board_tasks
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=postgres
-      - APP_KEY=${APP_KEY}
-      - MAIL_MAILER=${MAIL_MAILER}
-      - MAIL_HOST=${MAIL_HOST}
-      - MAIL_PORT=${MAIL_PORT}
-      - MAIL_USERNAME=${MAIL_USERNAME}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
-      - MAIL_ENCRYPTION=${MAIL_ENCRYPTION}
-      - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}
-      - MAIL_FROM_NAME="Board Tasks"
+    container_name: laravel_api
     depends_on:
       - postgres
-      - mailhog
+    expose:
+      - "9000"
+
+  nginx:
+    image: nginx:latest
+    container_name: laravel_nginx
+    ports:
+      - "8000:80"
     volumes:
       - ./board_tasks_api:/var/www
-    command: sh -c "composer install --no-dev --optimize-autoloader --no-interaction && php artisan migrate --seed && php artisan serve --host=0.0.0.0 --port=8000"
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - api
 
   frontend:
     build: ./board_task_front
